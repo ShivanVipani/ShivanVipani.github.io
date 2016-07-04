@@ -302,7 +302,8 @@ section h3.section-subheading {
     font-size: 25px;
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: none;
-    font-style: italic;
+    /* Change here */
+    font-style: none;
     font-weight: 400;
     margin-bottom: 75px
 }
