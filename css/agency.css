@@ -169,15 +169,17 @@ fieldset[disabled] .btn-xl.active {
     border-color: rgba(255, 255, 255, .02)
 }
 .navbar-default .navbar-toggle {
-    background-color: #fed136;
-    border-color: #fed136
+        /* Change same #fed136*/
+    background-color: #006999;
+    border-color: #006999
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #fff
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #fed136
+        /* Change same #fed136*/
+    background-color: #006999
 }
 .navbar-default .nav li a {
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -188,13 +190,15 @@ fieldset[disabled] .btn-xl.active {
 }
 .navbar-default .nav li a:hover,
 .navbar-default .nav li a:focus {
-    color: #fed136;
+        /* Change same #fed136*/
+    color: #006999;
     outline: 0
 }
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
     color: #fff;
-    background-color: #fed136
+        /* Change same #fed136*/
+    background-color: #006999
 }
 .navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
