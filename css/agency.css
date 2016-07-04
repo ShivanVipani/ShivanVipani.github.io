@@ -305,7 +305,7 @@ section h3.section-subheading {
     /* Change here */
     font-style: none;
     font-weight: 400;
-    margin-bottom: 75px
+    margin-bottom: 35px
 }
 @media (min-width: 768px) {
     section {
