@@ -98,7 +98,9 @@ fieldset[disabled] .btn-primary.active {
 }
 .btn-xl {
     color: #fff;
-    background-color: #fed136;
+    // 2sies: fed136
+    // 2pac: tab-colorz
+    background-color: #006999;
     border-color: #fed136;
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
