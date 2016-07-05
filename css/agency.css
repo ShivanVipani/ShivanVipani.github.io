@@ -308,6 +308,15 @@ section h3.section-subheading {
     font-weight: 400;
     margin-bottom: 0px
 }
+section h4.section-subheading {
+    font-size: 15px;
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: none;
+    /* Change here */
+    font-style: none;
+    font-weight: 400;
+    margin-bottom: 0px
+}
 @media (min-width: 768px) {
     section {
         padding: 150px 0
