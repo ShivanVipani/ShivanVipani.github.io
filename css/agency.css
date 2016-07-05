@@ -310,7 +310,7 @@ section h3.section-subheading {
 }
 section h4.section-subheading {
     font-size: 18px;
-    font-family: "Helvetica";
+    font-family: "Helvetica", "Georgia";
     text-transform: none;
     /* Change here */
     font-style: none;
