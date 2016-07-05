@@ -741,13 +741,15 @@ ul.social-buttons li a:active {
     opacity: 0;
     display: none
 }
+/* Changed */
 ::-moz-selection {
     text-shadow: none;
-    background: #fed136
+    background: #4499FF
 }
+/* Changed from fed136 */
 ::selection {
     text-shadow: none;
-    background: #fed136
+    background: #4499FF
 }
 img::selection {
     background: 0 0
