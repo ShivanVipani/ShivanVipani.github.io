@@ -36,8 +36,8 @@ async function init() {
 	.enter().append("rect")
 	.attr("x", function(d, i) { return x(diseases[i]); })
 	.attr("y", function(d) { return y(d['value'][0]); })
-	.attr("width", 50)
-	.attr("height", function(d) {return (height - y(d)); });
+	.attr("width", x.bandwidth())
+	.attr("height", function(d) {return (height - y(d['value'][0])); });
 
 	d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y));
 	d3.select("svg").append("g").attr("transform","translate(" +margin+ ","+ (height+margin)+")")
