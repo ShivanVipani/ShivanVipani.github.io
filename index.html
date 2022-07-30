@@ -4,7 +4,7 @@
 	rect {fill: lightblue; stroke: black;}
 </style>
 <style>
-#tooltip {
+	#tooltip {
 		opacity: 0;
 		postion: absolute;
 		text-align: center;
@@ -17,9 +17,9 @@
 <body onload='init()'>
 <svg width=800 height=800>
 </svg>
-<div id="tooltip"></div>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <body onload='init()'>
+<div id="tooltip"></div>
 <script>
 async function init() {
 	var diseases = ['ALZ','CAN','CLD','DIA','HOM','HTD','HYP','INJ','LIV','NEP','OTH','PNF','STK','SUI']
