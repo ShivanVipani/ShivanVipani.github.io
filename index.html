@@ -33,9 +33,9 @@ async function init() {
 		}
 	}
 	var tooltip = d3.select('tooltip').style('opacity', 0);
-	const mouseover = (event, d) => { tooltip.style("opacity", 1); }
-	const mouseleave = (event, d) => {}
-	const mousemove = (event, d) => {
+	const mouseover = (d) => { tooltip.style("opacity", 1); }
+	const mouseleave = (d) => {}
+	const mousemove = (d) => {
 		const text = d3.select('tooltip_text');
         text.text(`#s were ${d['value'][0]}`);
         const [x, y] = d3.pointer(event);
@@ -51,9 +51,9 @@ async function init() {
 	.attr("y", function(d) { return y(d['value'][0]); })
 	.attr("width", x.bandwidth())
 	.attr("height", function(d) {return (height - y(d['value'][0])); })
-	.on("mousemove", mousemove())
-	.on("mouseover", mouseover())
-    .on("mouseleave", mouseleave())
+	.on("mousemove", mousemove(d))
+	.on("mouseover", mouseover(d))
+    .on("mouseleave", mouseleave(d))
 
 	d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y));
 	d3.select("svg").append("g").attr("transform","translate(" +margin+ ","+ (height+margin)+")")
