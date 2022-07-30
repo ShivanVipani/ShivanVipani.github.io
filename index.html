@@ -14,11 +14,11 @@ async function init() {
 		if (csv[i]['County'] === 'Alameda') {
 			var year = parseInt(csv[i]['year'])
 			if (csv[i]['leadingcause'] in data) {
-				data[csv[i]['leadingcause']][year-2017] += parseInt(csv[i]['Count'])
+				data[csv[i]['leadingcause']][year-2017] += parseInt(csv[i]['Count']) || 0
 			}
 			else {
 				data[csv[i]['leadingcause']] = [0,0,0,0]
-				data[csv[i]['leadingcause']][year-2017] += parseInt(csv[i]['Count'])
+				data[csv[i]['leadingcause']][year-2017] += parseInt(csv[i]['Count']) || 0
 			}
 		}
 	}
