@@ -55,13 +55,27 @@ async function init() {
 	.on("mouseover", function(d) {tooltip.style("opacity", .9)
 		.style("left", d3.event.pageX + "px")		
         .style("top", (d3.event.pageY - 28) + "px")
-        .html("#:" + d['value'][0]) + <br> + "Hi";})	
+        .html("#:" + d['value'][0]) + "<br> Hi";})	
     .on("mouseout", function(d) {tooltip.style("opacity", 0);	})
 
 
-	d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y));
+	d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y))
+	.append("text")
+         .attr("transform", "rotate(-90)")
+         .attr("y", 6)
+         .attr("dy", "-5.1em")
+         .attr("text-anchor", "end")
+         .attr("stroke", "black")
+         .text("Cases");
 	d3.select("svg").append("g").attr("transform","translate(" +margin+ ","+ (height+margin)+")")
-	.call(d3.axisBottom(x));
+	.call(d3.axisBottom(x))
+	.append("text")
+         .attr("y", height - 250)
+         .attr("x", width - 100)
+         .attr("text-anchor", "end")
+         .attr("stroke", "black")
+         .text("Disease");
+
 
 
 }
