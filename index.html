@@ -51,7 +51,7 @@ async function init() {
 	.attr("y", function(d) { return y(d['value'][0]); })
 	.attr("width", x.bandwidth())
 	.attr("height", function(d) {return (height - y(d['value'][0])); })
-	.on("mousemove", mousemove)
+	.on("mousemove", mousemove())
 	.on("mouseover", mouseover())
     .on("mouseleave", mouseleave())
 
