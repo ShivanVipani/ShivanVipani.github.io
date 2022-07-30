@@ -8,8 +8,8 @@
 		opacity: 0;
 		position: absolute;
 		text-align: center;
-		width: 60px;
-		height: 40px;
+		width: 80px;
+		height: 200px;
 		background: white;
 		border: 0px;
 	}
@@ -90,14 +90,14 @@ async function init() {
 	.on("mouseover", function(d, i) {tooltip.style("opacity", .9)
 		.style("left", d3.event.pageX + "px")		
         .style("top", (d3.event.pageY - 28) + "px")
-        .html("Hispanic:" + race_data[diseases[i]]['Hispanic'][0] 
-        	+ "<br>Asian:" + race_data[diseases[i]]['Non-Hispanic Asian'][0] 
-        	+ "<br>Black:" + race_data[diseases[i]]['Non-Hispanic Black/African-American'][0] 
-        	+ "<br>Multi-Racial:" + race_data[diseases[i]]['Non-Hispanic Multi-Race'][0] 
-        	+ "<br>Native:" + race_data[diseases[i]]['Non-Hispanic Native American/Alaskan Native'][0] 
-        	+ "<br>Other:" + race_data[diseases[i]]['Non-Hispanic Other/Unknown'][0] 
-        	+ "<br>Pacific Islander:" + race_data[diseases[i]]['Non-Hispanic Pacific Islander/Native Hawaiian'][0] 
-        	+ "<br>White:" + race_data[diseases[i]]['Non-Hispanic White'][0] 
+        .html("Hispanic: " + race_data[diseases[i]]['Hispanic'][0] 
+        	+ "<br>Asian: " + race_data[diseases[i]]['Non-Hispanic Asian'][0] 
+        	+ "<br>Black: " + race_data[diseases[i]]['Non-Hispanic Black/African-American'][0] 
+        	+ "<br>Multi-Racial: " + race_data[diseases[i]]['Non-Hispanic Multi-Race'][0] 
+        	+ "<br>Native: " + race_data[diseases[i]]['Non-Hispanic Native American/Alaskan Native'][0] 
+        	+ "<br>Other: " + race_data[diseases[i]]['Non-Hispanic Other/Unknown'][0] 
+        	+ "<br>Pacific Islander: " + race_data[diseases[i]]['Non-Hispanic Pacific Islander/Native Hawaiian'][0] 
+        	+ "<br>White: " + race_data[diseases[i]]['Non-Hispanic White'][0] 
         	);})	
     .on("mouseout", function(d) {tooltip.style("opacity", 0);	})
 
