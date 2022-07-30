@@ -45,7 +45,7 @@ async function init() {
 	.attr("height", function(d) {return (height - y(d['value'][0])); })
 	.on("mouseover", function(d) {div.style("opacity", .9)
 		.style("left", (d3.event.pageX) + "px")		
-        .style("top", (d3.event.pageY - 28) + "px")
+        .style("top", (800 - d3.event.pageY - 28) + "px")
         .html(d['value'][0]);})	
     .on("mouseleave", function(d) {div.style("opacity", 0);	})
 
