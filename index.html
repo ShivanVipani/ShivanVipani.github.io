@@ -38,7 +38,21 @@ async function init() {
 	.attr("x", function(d, i) { return x(diseases[i]); })
 	.attr("y", function(d) { return y(d['value'][0]); })
 	.attr("width", x.bandwidth())
-	.attr("height", function(d) {return (height - y(d['value'][0])); });
+	.attr("height", function(d) {return (height - y(d['value'][0])); })
+	.on("mouseenter", onMouseEnter)
+    .on("mouseleave", onMouseLeave)
+    const tooltip = d3.select("#tooltip")
+    
+    function onMouseEnter(d) {
+    tooltip.style("opacity", 1)
+    tooltip.select("#range")
+    	.text([
+    		"Hi",
+        	"bye",
+    	].join(" "))
+    }
+    function onMouseLeave() {
+  	}
 
 	d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y));
 	d3.select("svg").append("g").attr("transform","translate(" +margin+ ","+ (height+margin)+")")
