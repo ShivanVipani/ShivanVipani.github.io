@@ -53,26 +53,26 @@ async function init() {
 	}
 	race_data = {}
 	for (var i = 0; i < race_csv.length; i++) {
-		if (race_csv[i]['county'] === 'Alameda') {
+		if (race_csv[i]['County'] === 'Alameda') {
 			var year = parseInt(csv[i]['year'])
 			if (race_csv[i]['leadingcause'] in race_data) {
-				if (race_csv[i]['race_ethnicity'] in race_data[csv[i]['leadingcause']]) {
-					race_data[csv[i]['leadingcause']][race_csv[i]['race_ethnicity']][year-2017] += parseInt(csv[i]['Count']) || 0
+				if (race_csv[i]['Race_Ethnicity'] in race_data[csv[i]['leadingcause']]) {
+					race_data[csv[i]['leadingcause']][race_csv[i]['Race_Ethnicity']][year-2017] += parseInt(csv[i]['Count']) || 0
 				}
 				else {
-					race_data[csv[i]['leadingcause']][race_csv[i]['race_ethnicity']][year-2017] = [0,0,0,0]
-					race_data[csv[i]['leadingcause']][race_csv[i]['race_ethnicity']][year-2017] += parseInt(csv[i]['Count']) || 0
+					race_data[csv[i]['leadingcause']][race_csv[i]['Race_Ethnicity']][year-2017] = [0,0,0,0]
+					race_data[csv[i]['leadingcause']][race_csv[i]['Race_Ethnicity']][year-2017] += parseInt(csv[i]['Count']) || 0
 				}
 			}
 			else {
 				race_data[csv[i]['leadingcause']] = {}
 				//[0,0,0,0]
-				if (race_csv[i]['race_ethnicity'] in race_data[csv[i]['leadingcause']]) {
-					race_data[csv[i]['leadingcause']][race_csv[i]['race_ethnicity']][year-2017] += parseInt(csv[i]['Count']) || 0
+				if (race_csv[i]['Race_Ethnicity'] in race_data[csv[i]['leadingcause']]) {
+					race_data[csv[i]['leadingcause']][race_csv[i]['Race_Ethnicity']][year-2017] += parseInt(csv[i]['Count']) || 0
 				}
 				else {
-					race_data[csv[i]['leadingcause']][race_csv[i]['race_ethnicity']][year-2017] = [0,0,0,0]
-					race_data[csv[i]['leadingcause']][race_csv[i]['race_ethnicity']][year-2017] += parseInt(csv[i]['Count']) || 0
+					race_data[csv[i]['leadingcause']][race_csv[i]['Race_Ethnicity']][year-2017] = [0,0,0,0]
+					race_data[csv[i]['leadingcause']][race_csv[i]['Race_Ethnicity']][year-2017] += parseInt(csv[i]['Count']) || 0
 				}
 			}
 		}
