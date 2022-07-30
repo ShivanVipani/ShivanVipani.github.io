@@ -16,7 +16,6 @@
 </style>
 <body onload='init()'>
 <svg width=800 height=800></svg>
-<script src='https://d3js.org/d3.v5.min.js'></script>
 <div id="tooltip"></div>
 <script>
 async function init() {
@@ -44,9 +43,9 @@ async function init() {
 			}
 		}
 	}
-	var tooltip = d3.select("#tooltip");
-
 	console.log(data)
+
+	var tooltip = d3.select("#tooltip");
 	g.selectAll("rect").data(d3.entries(data))
 	.enter().append("rect")
 	.attr("x", function(d, i) { return x(diseases[i]); })
@@ -58,6 +57,7 @@ async function init() {
         .style("top", (d3.event.pageY - 28) + "px")
         .html("#:" + d['value'][0]);})	
     .on("mouseout", function(d) {tooltip.style("opacity", 0);	})
+
 
 	d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y));
 	d3.select("svg").append("g").attr("transform","translate(" +margin+ ","+ (height+margin)+")")
