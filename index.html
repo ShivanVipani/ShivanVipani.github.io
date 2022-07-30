@@ -56,7 +56,7 @@ async function init() {
 		if (race_csv[i]['County'] === 'Alameda') {
 			var year = parseInt(race_csv[i]['year'])
 			if (race_csv[i]['leadingcause'] in race_data) {
-				if (race_csv[i]['Race_Ethnicity'] in race_data[race__csv[i]['leadingcause']]) {
+				if (race_csv[i]['Race_Ethnicity'] in race_data[race_csv[i]['leadingcause']]) {
 					race_data[race_csv[i]['leadingcause']][race_csv[i]['Race_Ethnicity']][year-2017] += parseInt(race_csv[i]['Count']) || 0
 				}
 				else {
