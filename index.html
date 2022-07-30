@@ -12,12 +12,12 @@ async function init() {
 	console.log(csv[0])
 	for (var i = 0; i < csv.length; i++) {
 		if (csv[i]['County'] === 'Alameda') {
+			var year = parseInt(csv[i]['year'])
 			if (csv[i]['leadingcause'] in data) {
-
+				data[csv[i]['leadingcause']][year-2017] += parseInt(csv[i]['Count'])
 			}
 			else {
 				data[csv[i]['leadingcause']] = [0,0,0,0]
-				var year = parseInt(csv[i]['year'])
 				data[csv[i]['leadingcause']][year-2017] += parseInt(csv[i]['Count'])
 			}
 		}
