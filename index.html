@@ -7,8 +7,22 @@
 <body onload='init()'>
 <script>
 async function init() {
-	data = await d3.csv("https://ShivanVipani.github.io/disease.csv");
-	console.log(data[0])
+	csv = await d3.csv("https://ShivanVipani.github.io/disease.csv");
+	data = {}
+	console.log(csv[0])
+	for (var i = 0; i < csv.length; i++) {
+		if (csv[i]['County'] === 'Alameda') {
+			if (csv[i]['leadingcause'] in data) {
+
+			}
+			else {
+				data[csv[i]['leadingcause']] = [0,0,0,0]
+				var year = parseInt(csv[i]['year'])
+				data[csv[i]['leadingcause']][year-2017] += parseInt(csv[i]['Count'])
+			}
+		}
+	}
+	console.log(data['ALZ'])
 }
 
 </script>
