@@ -34,7 +34,7 @@ async function init() {
 	console.log(data)
 	g.selectAll("rect").data(d3.entries(data))
 	.enter().append("rect")
-	.attr("x", function(d, i) { return x(diseases[i]); })
+	.attr("x", function(d, i) { return diseases[i]; })
 	.attr("y", function(d) { return y(d['value'][0]); })
 	.attr("width", x.bandwidth())
 	.attr("height", function(d) {return (height - y(d)); });
