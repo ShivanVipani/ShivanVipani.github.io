@@ -21,6 +21,13 @@
 async function init() {
 	var diseases = ['ALZ','CAN','CLD','DIA','HOM','HTD','HYP','INJ','LIV','NEP','OTH','PNF','STK','SUI']
 	var svg = d3.select("svg");
+	svg.append("text")
+       .attr("transform", "translate(100,0)")
+       .attr("x", 50)
+       .attr("y", 50)
+       .attr("font-size", "24px")
+       .text("Alameda County Deaths by Cause")
+
 	var margin = 50;
 	var width = svg.attr("width") - 2*margin;
 	var height = svg.attr("height") - 2*margin;
@@ -70,8 +77,8 @@ async function init() {
 	d3.select("svg").append("g").attr("transform","translate(" +margin+ ","+ (height+margin)+")")
 	.call(d3.axisBottom(x))
 	.append("text")
-         .attr("y", height - 250)
-         .attr("x", width - 100)
+         .attr("y", height + 10)
+         .attr("x", width)
          .attr("text-anchor", "end")
          .attr("stroke", "black")
          .text("Disease");
