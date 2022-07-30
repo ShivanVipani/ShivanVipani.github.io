@@ -87,10 +87,18 @@ async function init() {
 	.attr("y", function(d) { return y(d['value'][0]); })
 	.attr("width", x.bandwidth())
 	.attr("height", function(d) {return (height - y(d['value'][0])); })
-	.on("mouseover", function(d) {tooltip.style("opacity", .9)
+	.on("mouseover", function(d, i) {tooltip.style("opacity", .9)
 		.style("left", d3.event.pageX + "px")		
         .style("top", (d3.event.pageY - 28) + "px")
-        .html("#:" + d['value'][0] + "<br> Hi");})	
+        .html("Hispanic:" + race_data[diseases[i]]['Hispanic'][0] 
+        	+ "<br>Asian:" + race_data[diseases[i]]['Non-Hispanic Asian'][0] 
+        	+ "<br>Black:" + race_data[diseases[i]]['Non-Hispanic Black/African-American'][0] 
+        	+ "<br>Multi-Racial:" + race_data[diseases[i]]['Non-Hispanic Multi-Race'][0] 
+        	+ "<br>Native:" + race_data[diseases[i]]['Non-Hispanic Native American/Alaskan Native'][0] 
+        	+ "<br>Other:" + race_data[diseases[i]]['Non-Hispanic Other/Unknown'][0] 
+        	+ "<br>Pacific Islander:" + race_data[diseases[i]]['Non-Hispanic Pacific Islander/Native Hawaiian'][0] 
+        	+ "<br>White:" + race_data[diseases[i]]['Non-Hispanic White'][0] 
+        	);})	
     .on("mouseout", function(d) {tooltip.style("opacity", 0);	})
 
 
