@@ -36,6 +36,8 @@ async function init() {
     	return "<strong>Disease:</strong> <span style='color:red'>" + diseases[i] + "</span>";
   	})
 
+  	svg.call(tip);
+
 	console.log(data)
 	g.selectAll("rect").data(d3.entries(data))
 	.enter().append("rect")
