@@ -32,17 +32,9 @@ async function init() {
 			}
 		}
 	}
-	var tooltip = d3.select('tooltip').style('opacity', 0);
-	const mouseover = (d) => { tooltip.style("opacity", 1); }
-	const mouseleave = (d) => {}
-	const mousemove = (d) => {
-		const text = d3.select('tooltip_text');
-        text.text(`#s were ${d['value'][0]}`);
-        const [x, y] = d3.pointer(event);
-
-        tooltip
-          .attr('transform', `translate(${x}, ${y})`);
-	}
+	var div = d3.select("body").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
 
 	console.log(data)
 	g.selectAll("rect").data(d3.entries(data))
@@ -51,9 +43,11 @@ async function init() {
 	.attr("y", function(d) { return y(d['value'][0]); })
 	.attr("width", x.bandwidth())
 	.attr("height", function(d) {return (height - y(d['value'][0])); })
-	.on("mousemove", mousemove(d))
-	.on("mouseover", mouseover(d))
-    .on("mouseleave", mouseleave(d))
+	.on("mouseover", function(d) {div.style("opacity", .9)
+		.style("left", (d3.event.pageX) + "px")		
+        .style("top", (d3.event.pageY - 28) + "px")
+        .html(d['value'][0]);}	
+    .on("mouseleave", function(d) {div.style("opacity", 0);	})
 
 	d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y));
 	d3.select("svg").append("g").attr("transform","translate(" +margin+ ","+ (height+margin)+")")
