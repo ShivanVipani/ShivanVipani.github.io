@@ -8,7 +8,7 @@
 		opacity: 0;
 		position: absolute;
 		text-align: center;
-		width: 110px;
+		width: 100px;
 		height: 112px;
 		background: white;
 		border: 0px;
@@ -17,6 +17,11 @@
 	}
 </style>
 <body onload='init()'>
+<button onclick="update(0)">2017</button>
+<button onclick="update(1)">2018</button>
+<button onclick="update(2)">2019</button>
+<button onclick="update(3)">2020</button>
+
 <svg width=800 height=800></svg>
 <div id="tooltip"></div>
 <script>
@@ -83,26 +88,6 @@ async function init() {
 	console.log(race_data)
 
 	var tooltip = d3.select("#tooltip");
-	g.selectAll("rect").data(d3.entries(data))
-	.enter().append("rect")
-	.attr("x", function(d, i) { return x(diseases[i]); })
-	.attr("y", function(d) { return y(d['value'][0]); })
-	.attr("width", x.bandwidth())
-	.attr("height", function(d) {return (height - y(d['value'][0])); })
-	.on("mouseover", function(d, i) {tooltip.style("opacity", .9)
-		.style("left", d3.event.pageX + "px")		
-        .style("top", (d3.event.pageY - 28) + "px")
-        .html("Hispanic: " + race_data[diseases[i]]['Hispanic'][0] 
-        	+ "<br>Asian: " + race_data[diseases[i]]['Non-Hispanic Asian'][0] 
-        	+ "<br>Black: " + race_data[diseases[i]]['Non-Hispanic Black/African-American'][0] 
-        	+ "<br>Multi-Racial: " + race_data[diseases[i]]['Non-Hispanic Multi-Race'][0] 
-        	+ "<br>Native: " + race_data[diseases[i]]['Non-Hispanic Native American/Alaskan Native'][0] 
-        	+ "<br>Other: " + race_data[diseases[i]]['Non-Hispanic Other/Unknown'][0] 
-        	+ "<br>Pacific Islander: " + race_data[diseases[i]]['Non-Hispanic Pacific Islander/Native Hawaiian'][0] 
-        	+ "<br>White: " + race_data[diseases[i]]['Non-Hispanic White'][0] 
-        	);})	
-    .on("mouseout", function(d) {tooltip.style("opacity", 0);	})
-
 
 	d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y))
 	.append("text")
@@ -122,7 +107,32 @@ async function init() {
          .attr("stroke", "black")
          .text("Disease");
 
+    function update(index) {
+		g.selectAll("rect").data(d3.entries(data))
+		.enter().append("rect")
+		.transition()
+    	.duration(1000)
+		.attr("x", function(d, i) { return x(diseases[i]); })
+		.attr("y", function(d) { return y(d['value'][index]); })
+		.attr("width", x.bandwidth())
+		.attr("height", function(d) {return (height - y(d['value'][index])); })
+		.on("mouseover", function(d, i) {tooltip.style("opacity", .9)
+			.style("left", d3.event.pageX + "px")		
+	        .style("top", (d3.event.pageY - 28) + "px")
+	        .html("Hispanic: " + race_data[diseases[i]]['Hispanic'][index] 
+	        	+ "<br>Asian: " + race_data[diseases[i]]['Non-Hispanic Asian'][index] 
+	        	+ "<br>Black: " + race_data[diseases[i]]['Non-Hispanic Black/African-American'][index] 
+	        	+ "<br>Multi-Racial: " + race_data[diseases[i]]['Non-Hispanic Multi-Race'][index] 
+	        	+ "<br>Native: " + race_data[diseases[i]]['Non-Hispanic Native American/Alaskan Native'][index] 
+	        	+ "<br>Other: " + race_data[diseases[i]]['Non-Hispanic Other/Unknown'][index] 
+	        	+ "<br>Pacific Islander: " + race_data[diseases[i]]['Non-Hispanic Pacific Islander/Native Hawaiian'][index] 
+	        	+ "<br>White: " + race_data[diseases[i]]['Non-Hispanic White'][index] 
+	        	);})	
+	    .on("mouseout", function(d) {tooltip.style("opacity", 0);	})
 
+	}
+
+	update(0)
 
 }
 
