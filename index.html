@@ -49,13 +49,13 @@ const annotations = [
     type: d3.annotationCalloutCircle,
     subject: {
       radius: 20,         // circle radius
-      radiusPadding: 10   // white space around circle befor connector
+      radiusPadding: 0   // white space around circle befor connector
     },
     color: ["red"],
     x: 525,
     y: 15,
     dy: 30,
-    dx: 170
+    dx: 120
   }
 ]
 
@@ -175,7 +175,7 @@ function update(data, race_data, index, init=0) {
     if (index === 3) {
     	const makeAnnotations = d3.annotation().type(d3.annotationLabel)
 		.annotations(annotations)
-		d3.select("g")
+		svg.append("g").attr('class', 'annot')
 		.call(makeAnnotations)
     }
 }
