@@ -100,55 +100,55 @@ async function init() {
          .attr("text-anchor", "end")
          .attr("stroke", "black")
          .text("Disease");
-	update(0, 1)
+	update(data, race_data, 0, 1)
 }
 
-    function update(index, init=0) {
-    	var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
-    	var rect;
-    	if (init) {
-			rect = g.selectAll("rect").data(d3.entries(data))
-			.enter().append("rect")
-			.attr("x", function(d, i) { return x(diseases[i]); })
-			.attr("y", function(d) { return y(d['value'][index]); })
-			.attr("width", x.bandwidth())
-			.attr("height", 10)
-		}
-		else {
-			rect = g.selectAll("rect").data(d3.entries(data))
-			.enter().append("rect")
-			.attr("x", function(d, i) { return x(diseases[i]); })
-			.attr("y", function(d) { return y(d['value'][index]); })
-			.attr("width", x.bandwidth())
-		}
-
-		rect.transition()
-		.duration(1000)
-		.attr("height", function(d) {return (height - y(d['value'][index])); })
-		
-		rect.on("mouseover", function(d, i) {tooltip.style("opacity", .9)
-			.style("left", d3.event.pageX + "px")		
-	        .style("top", (d3.event.pageY - 28) + "px")
-	        .html("Hispanic: " + race_data[diseases[i]]['Hispanic'][index] 
-	        	+ "<br>Asian: " + race_data[diseases[i]]['Non-Hispanic Asian'][index] 
-	        	+ "<br>Black: " + race_data[diseases[i]]['Non-Hispanic Black/African-American'][index] 
-	        	+ "<br>Multi-Racial: " + race_data[diseases[i]]['Non-Hispanic Multi-Race'][index] 
-	        	+ "<br>Native: " + race_data[diseases[i]]['Non-Hispanic Native American/Alaskan Native'][index] 
-	        	+ "<br>Other: " + race_data[diseases[i]]['Non-Hispanic Other/Unknown'][index] 
-	        	+ "<br>Pacific Islander: " + race_data[diseases[i]]['Non-Hispanic Pacific Islander/Native Hawaiian'][index] 
-	        	+ "<br>White: " + race_data[diseases[i]]['Non-Hispanic White'][index] 
-	        	);})	
-	    .on("mouseout", function(d) {tooltip.style("opacity", 0);	})
-	    console.log("allo", index)
+function update(data, race_data, index, init=0) {
+	var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
+	var rect;
+	if (init) {
+		rect = g.selectAll("rect").data(d3.entries(data))
+		.enter().append("rect")
+		.attr("x", function(d, i) { return x(diseases[i]); })
+		.attr("y", function(d) { return y(d['value'][index]); })
+		.attr("width", x.bandwidth())
+		.attr("height", 10)
 	}
+	else {
+		rect = g.selectAll("rect").data(d3.entries(data))
+		.enter().append("rect")
+		.attr("x", function(d, i) { return x(diseases[i]); })
+		.attr("y", function(d) { return y(d['value'][index]); })
+		.attr("width", x.bandwidth())
+	}
+
+	rect.transition()
+	.duration(1000)
+	.attr("height", function(d) {return (height - y(d['value'][index])); })
+	
+	rect.on("mouseover", function(d, i) {tooltip.style("opacity", .9)
+		.style("left", d3.event.pageX + "px")		
+        .style("top", (d3.event.pageY - 28) + "px")
+        .html("Hispanic: " + race_data[diseases[i]]['Hispanic'][index] 
+        	+ "<br>Asian: " + race_data[diseases[i]]['Non-Hispanic Asian'][index] 
+        	+ "<br>Black: " + race_data[diseases[i]]['Non-Hispanic Black/African-American'][index] 
+        	+ "<br>Multi-Racial: " + race_data[diseases[i]]['Non-Hispanic Multi-Race'][index] 
+        	+ "<br>Native: " + race_data[diseases[i]]['Non-Hispanic Native American/Alaskan Native'][index] 
+        	+ "<br>Other: " + race_data[diseases[i]]['Non-Hispanic Other/Unknown'][index] 
+        	+ "<br>Pacific Islander: " + race_data[diseases[i]]['Non-Hispanic Pacific Islander/Native Hawaiian'][index] 
+        	+ "<br>White: " + race_data[diseases[i]]['Non-Hispanic White'][index] 
+        	);})	
+    .on("mouseout", function(d) {tooltip.style("opacity", 0);	})
+    console.log("allo", index)
+}
 
 
 
 
 </script>
-<button onclick="update(0)">2017</button>
-<button onclick="update(1)">2018</button>
-<button onclick="update(2)">2019</button>
-<button onclick="update(3)">2020</button>
+<button onclick="update(data, race_data, 0)">2017</button>
+<button onclick="update(data, race_data, 1)">2018</button>
+<button onclick="update(data, race_data, 2)">2019</button>
+<button onclick="update(data, race_data, 3)">2020</button>
 </body>
 </html>
