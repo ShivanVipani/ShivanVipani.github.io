@@ -16,14 +16,13 @@
 		padding:5px;
 	}
 </style>
-<body>
+<body onload='init()'>
 
 <svg width=800 height=800></svg>
 <div id="tooltip"></div>
 <script>
-var diseases = ['ALZ','CAN','CLD','DIA','HOM','HTD','HYP','INJ','LIV','NEP','OTH','PNF','STK','SUI']
-
 async function init() {
+	var diseases = ['ALZ','CAN','CLD','DIA','HOM','HTD','HYP','INJ','LIV','NEP','OTH','PNF','STK','SUI']
 
 	var csv = await d3.csv("https://ShivanVipani.github.io/disease.csv");
 	var race_csv = await d3.csv("https://ShivanVipani.github.io/race.csv");
@@ -68,8 +67,6 @@ async function init() {
 	}
 	console.log(data)
 	console.log(race_data)
-	//return data, race_data
-	//var data, race_data = init()
 
 	var svg = d3.select("svg");
 	svg.append("text")
@@ -95,7 +92,6 @@ async function init() {
          .attr("text-anchor", "end")
          .attr("stroke", "black")
          .text("Cases");
-
 	d3.select("svg").append("g").attr("transform","translate(" +margin+ ","+ (height+margin)+")")
 	.call(d3.axisBottom(x))
 	.append("text")
@@ -105,16 +101,30 @@ async function init() {
          .attr("stroke", "black")
          .text("Disease");
 
-    var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
+    function update(index, init=0) {
+    	var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
+    	var rect;
+    	if (init) {
+			rect = g.selectAll("rect").data(d3.entries(data))
+			.enter().append("rect")
+			.attr("x", function(d, i) { return x(diseases[i]); })
+			.attr("y", function(d) { return y(d['value'][index]); })
+			.attr("width", x.bandwidth())
+			.attr("height", 10)
+		}
+		else {
+			rect = g.selectAll("rect").data(d3.entries(data))
+			.enter().append("rect")
+			.attr("x", function(d, i) { return x(diseases[i]); })
+			.attr("y", function(d) { return y(d['value'][index]); })
+			.attr("width", x.bandwidth())
+		}
 
-    function update(data, race_data, index) {
-		g.selectAll("rect").data(d3.entries(data))
-		.enter().append("rect")
-		.attr("x", function(d, i) { return x(diseases[i]); })
-		.attr("y", function(d) { return y(d['value'][index]); })
-		.attr("width", x.bandwidth())
+		rect.transition()
+		.duration(1000)
 		.attr("height", function(d) {return (height - y(d['value'][index])); })
-		.on("mouseover", function(d, i) {tooltip.style("opacity", .9)
+		
+		rect.on("mouseover", function(d, i) {tooltip.style("opacity", .9)
 			.style("left", d3.event.pageX + "px")		
 	        .style("top", (d3.event.pageY - 28) + "px")
 	        .html("Hispanic: " + race_data[diseases[i]]['Hispanic'][index] 
@@ -127,17 +137,18 @@ async function init() {
 	        	+ "<br>White: " + race_data[diseases[i]]['Non-Hispanic White'][index] 
 	        	);})	
 	    .on("mouseout", function(d) {tooltip.style("opacity", 0);	})
-	    console.log("Update" + index)
+
 	}
 
-	update(data, race_data, 0)
+	update(0, 1)
+
 }
 
 
 </script>
-<button onclick="update(data, race_data, 0)">2017</button>
-<button onclick="update(data, race_data, 1)">2018</button>
-<button onclick="update(data, race_data, 2)">2019</button>
-<button onclick="update(data, race_data, 3)">2020</button>
+<button onclick="update(0)">2017</button>
+<button onclick="update(1)">2018</button>
+<button onclick="update(2)">2019</button>
+<button onclick="update(3)">2020</button>
 </body>
 </html>
