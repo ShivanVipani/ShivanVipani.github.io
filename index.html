@@ -1,5 +1,6 @@
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
+<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 <style> 
 	rect {stroke: black;}
 </style>
@@ -38,6 +39,29 @@ var x = d3.scaleBand().domain(diseases).range([0,width]);
 var y = d3.scaleLog().domain([10,2305]).range([height,0]);
 var tooltip = d3.select("#tooltip");
 svg.append("g").attr("transform", "translate("+margin+","+margin+")")
+
+const annotations = [
+  {
+    note: {
+      label: "Here is the annotation label",
+      title: "Research Needed!"
+    },
+    type: d3.annotationCalloutCircle,
+    subject: {
+      radius: 20,         // circle radius
+      radiusPadding: 10   // white space around circle befor connector
+    },
+    color: ["red"],
+    x: 40,
+    y: 160,
+    dy: 70,
+    dx: 70
+  }
+]
+const makeAnnotations = d3.annotation()
+  .annotations(annotations)
+ d3.select("g")
+  .call(makeAnnotations)
 
 async function init() {
 
