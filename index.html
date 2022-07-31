@@ -68,9 +68,8 @@ async function init() {
 	}
 	console.log(data)
 	console.log(race_data)
-	return data, race_data
-}
-	var data, race_data = init()
+	//return data, race_data
+	//var data, race_data = init()
 
 	var svg = d3.select("svg");
 	svg.append("text")
@@ -132,7 +131,7 @@ async function init() {
 	}
 
 	update(data, race_data, 0)
-
+}
 
 
 </script>
