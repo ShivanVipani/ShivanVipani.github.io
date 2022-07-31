@@ -23,25 +23,10 @@
 <script>
 async function init() {
 	var diseases = ['ALZ','CAN','CLD','DIA','HOM','HTD','HYP','INJ','LIV','NEP','OTH','PNF','STK','SUI']
-	var svg = d3.select("svg");
-	svg.append("text")
-       .attr("transform", "translate(100,0)")
-       .attr("x", 50)
-       .attr("y", 20)
-       .attr("font-size", "24px")
-       .text("Alameda County Deaths by Cause")
 
-	var margin = 50;
-	var width = svg.attr("width") - 2*margin;
-	var height = svg.attr("height") - 2*margin;
-	var x = d3.scaleBand().domain(diseases).range([0,width]);
-	var y = d3.scaleLinear().domain([0,2305]).range([height,0]);
-	var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
-
-
-	csv = await d3.csv("https://ShivanVipani.github.io/disease.csv");
-	race_csv = await d3.csv("https://ShivanVipani.github.io/race.csv");
-	data = {}
+	var csv = await d3.csv("https://ShivanVipani.github.io/disease.csv");
+	var race_csv = await d3.csv("https://ShivanVipani.github.io/race.csv");
+	var data = {}
 	for (var i = 0; i < csv.length; i++) {
 		if (csv[i]['County'] === 'Alameda') {
 			var year = parseInt(csv[i]['year'])
@@ -54,7 +39,7 @@ async function init() {
 			}
 		}
 	}
-	race_data = {}
+	var race_data = {}
 	for (var i = 0; i < race_csv.length; i++) {
 		if (race_csv[i]['County'] === 'Alameda') {
 			var year = parseInt(race_csv[i]['year'])
@@ -82,7 +67,22 @@ async function init() {
 	}
 	console.log(data)
 	console.log(race_data)
+}
 
+	var svg = d3.select("svg");
+	svg.append("text")
+       .attr("transform", "translate(100,0)")
+       .attr("x", 50)
+       .attr("y", 20)
+       .attr("font-size", "24px")
+       .text("Alameda County Deaths by Cause")
+
+	var margin = 50;
+	var width = svg.attr("width") - 2*margin;
+	var height = svg.attr("height") - 2*margin;
+	var x = d3.scaleBand().domain(diseases).range([0,width]);
+	var y = d3.scaleLinear().domain([0,2305]).range([height,0]);
+	var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
 	var tooltip = d3.select("#tooltip");
 
 	d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y))
