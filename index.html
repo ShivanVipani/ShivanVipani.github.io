@@ -113,7 +113,7 @@ function update(index, init=0) {
 		.attr("x", function(d, i) { return x(diseases[i]); })
 		.attr("y", function(d) { return y(d['value'][index]); })
 		.attr("width", x.bandwidth())
-		.attr("height", 10)
+		.attr("height", height - 10)
 	}
 	else {
 		rect = g.selectAll("rect").data(d3.entries(data))
