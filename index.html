@@ -55,14 +55,13 @@ const annotations = [
     x: 40,
     y: 160,
     dy: 70,
-    dx: 70,
-    id: "message1"
+    dx: 70
   }
 ]
 const makeAnnotations = d3.annotation()
   .annotations(annotations)
  d3.select("g")
-  .call(makeAnnotations)
+  .call(makeAnnotations).attr("id", "message1")
 
 async function init() {
 
