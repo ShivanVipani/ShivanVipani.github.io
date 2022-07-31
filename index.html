@@ -146,7 +146,7 @@ function update(data, race_data, index, init=0) {
         	);
         d3.select('#rect'+i).attr("fill", "#82E0AA");
     })	
-    .on("mouseout", function(d) {tooltip.style("opacity", 0);	
+    .on("mouseout", function(d,i) {tooltip.style("opacity", 0);	
 		d3.select('#rect'+i).attr("fill", "lightblue");
 	})
     console.log("allo", index)
