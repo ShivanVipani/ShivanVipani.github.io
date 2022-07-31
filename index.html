@@ -84,7 +84,7 @@ async function init() {
 	}
 	console.log(data)
 	console.log(race_data)
-	d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y).tickFormat(d3.format("s")))
+	d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y).tickFormat(d3.format(",d")))
 	.append("text")
          .attr("transform", "rotate(-90)")
          .attr("x", 6)
