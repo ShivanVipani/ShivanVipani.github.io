@@ -117,7 +117,7 @@ function update(data, race_data, index, init=0) {
 	}
 	else {
 		rect = g.selectAll("rect").data(d3.entries(data))
-		.enter().append("rect")
+		.update().append("rect")
 		.attr("x", function(d, i) { return x(diseases[i]); })
 		.attr("y", function(d) { return y(d['value'][index]); })
 		.attr("width", x.bandwidth())
