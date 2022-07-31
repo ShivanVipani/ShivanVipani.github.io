@@ -58,10 +58,6 @@ const annotations = [
     dx: 70
   }
 ]
-const makeAnnotations = d3.annotation().type(d3.annotationLabel)
-  .annotations(annotations)
- d3.select("g")
-  .call(makeAnnotations)
 
 async function init() {
 
@@ -175,6 +171,13 @@ function update(data, race_data, index, init=0) {
 	})
     console.log("allo", index)
     svg.select("text").text("Alameda County Deaths by Cause in "+(2017+i))
+
+    if (index === 3) {
+    	const makeAnnotations = d3.annotation().type(d3.annotationLabel)
+		.annotations(annotations)
+		d3.select("g")
+		.call(makeAnnotations)
+    }
 }
 
 
