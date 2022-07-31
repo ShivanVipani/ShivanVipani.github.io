@@ -62,8 +62,31 @@ const makeAnnotations = d3.annotation().type(d3.annotationLabel)
 .annotations(annotations)
 svg.append("g").attr('class', 'annot')
 .call(makeAnnotations)
-
 d3.select('.annot').style('opacity', 0)
+
+const annotations2 = [
+  {
+    note: {
+      label: "Here is the annotation label",
+      title: "Research Needed!"
+    },
+    type: d3.annotationCalloutCircle,
+    subject: {
+      radius: 20,         // circle radius
+      radiusPadding: 0   // white space around circle befor connector
+    },
+    color: ["red"],
+    x: 275,
+    y: 725,
+    dy: -600,
+    dx: -30
+  }
+]
+const makeAnnotations2 = d3.annotation().type(d3.annotationLabel)
+.annotations(annotations2)
+svg.append("g").attr('class', 'annot2')
+.call(makeAnnotations2)
+d3.select('.annot2').style('opacity', 0)
 
 async function init() {
 
@@ -179,7 +202,10 @@ function update(data, race_data, index, init=0) {
     svg.select("text").text("Alameda County Deaths by Cause in "+(2017+index))
 
     if (index === 3) {
-    	//
+    	d3.select('.annot').style('opacity', 1)
+    }
+    if (index === 2) {
+    	d3.select('.annot2').style('opacity', 1)
     }
 }
 
