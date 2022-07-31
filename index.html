@@ -204,8 +204,14 @@ function update(data, race_data, index, init=0) {
     if (index === 3) {
     	d3.select('.annot').style('opacity', 1)
     }
+    else {
+    	d3.select('.annot').style('opacity', 0)
+    }
     if (index === 2) {
     	d3.select('.annot2').style('opacity', 1)
+    }
+    else {
+    	d3.select('.annot2').style('opacity', 0)
     }
 }
 
