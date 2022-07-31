@@ -103,9 +103,8 @@ d3.select("svg").append("g").attr("transform","translate(" +margin+ ","+ (height
      .attr("stroke", "black")
      .text("Disease");
 
-var g;
+var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");;
 function update(index, init=0) {
-	g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
 	var rect;
 	if (init) {
 		rect = g.selectAll("rect").data(d3.entries(data))
