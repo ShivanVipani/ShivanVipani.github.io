@@ -114,6 +114,7 @@ function update(data, race_data, index, init=0) {
 		.attr("width", x.bandwidth())
 		.attr("y", height)
 		.attr("fill", "lightblue")
+		.attr("id", (d,i)=>'rect'+i)
 		//.attr("y", function(d) { return y(d['value'][index]); })
 		//.attr("height", 10)
 		console.log("init")
