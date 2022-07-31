@@ -21,12 +21,13 @@
 <svg width=800 height=800></svg>
 <div id="tooltip"></div>
 <script>
+var diseases, data, race_data;
 async function init() {
-	var diseases = ['ALZ','CAN','CLD','DIA','HOM','HTD','HYP','INJ','LIV','NEP','OTH','PNF','STK','SUI']
+	diseases = ['ALZ','CAN','CLD','DIA','HOM','HTD','HYP','INJ','LIV','NEP','OTH','PNF','STK','SUI']
 
 	var csv = await d3.csv("https://ShivanVipani.github.io/disease.csv");
 	var race_csv = await d3.csv("https://ShivanVipani.github.io/race.csv");
-	var data = {}
+	data = {}
 	for (var i = 0; i < csv.length; i++) {
 		if (csv[i]['County'] === 'Alameda') {
 			var year = parseInt(csv[i]['year'])
@@ -39,7 +40,7 @@ async function init() {
 			}
 		}
 	}
-	var race_data = {}
+	race_data = {}
 	for (var i = 0; i < race_csv.length; i++) {
 		if (race_csv[i]['County'] === 'Alameda') {
 			var year = parseInt(race_csv[i]['year'])
@@ -65,6 +66,7 @@ async function init() {
 			}
 		}
 	}
+}
 	console.log(data)
 	console.log(race_data)
 
@@ -142,7 +144,7 @@ async function init() {
 
 	update(0, 1)
 
-}
+
 
 
 </script>
