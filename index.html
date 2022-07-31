@@ -61,7 +61,9 @@ const annotations = [
 const makeAnnotations = d3.annotation()
   .annotations(annotations)
  d3.select("g")
-  .call(makeAnnotations).attr("id", "message1")
+  .call(makeAnnotations)
+
+d3.select("annotations").attr("opacity", 0)
 
 async function init() {
 
