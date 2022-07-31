@@ -35,7 +35,7 @@ var margin = 50;
 var width = svg.attr("width") - 2*margin;
 var height = svg.attr("height") - 2*margin;
 var x = d3.scaleBand().domain(diseases).range([0,width]);
-var y = d3.scaleLog().domain([0,2305]).range([height,0]);
+var y = d3.scaleLog().domain([10,2305]).range([height,0]);
 var tooltip = d3.select("#tooltip");
 svg.append("g").attr("transform", "translate("+margin+","+margin+")")
 
