@@ -52,18 +52,16 @@ const annotations = [
       radiusPadding: 10   // white space around circle befor connector
     },
     color: ["red"],
-    x: 40,
-    y: 160,
+    x: 525,
+    y: 15,
     dy: 70,
     dx: 70
   }
 ]
-const makeAnnotations = d3.annotation()
+const makeAnnotations = d3.annotation().type(d3.annotationLabel)
   .annotations(annotations)
  d3.select("g")
   .call(makeAnnotations)
-
-d3.selectAll("annotations").style("opacity", 0)
 
 async function init() {
 
