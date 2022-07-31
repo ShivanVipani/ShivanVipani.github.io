@@ -16,11 +16,13 @@
 		padding:5px;
 	}
 </style>
-<body>
+<body onload='init()'>
 
 <svg width=800 height=800></svg>
 <div id="tooltip"></div>
 <script>
+var diseases = ['ALZ','CAN','CLD','DIA','HOM','HTD','HYP','INJ','LIV','NEP','OTH','PNF','STK','SUI']
+var data, race_data;
 async function init() {
 
 	var csv = await d3.csv("https://ShivanVipani.github.io/disease.csv");
@@ -66,11 +68,7 @@ async function init() {
 	}
 	console.log(data)
 	console.log(race_data)
-	return data, race_data
 }
-
-var diseases = ['ALZ','CAN','CLD','DIA','HOM','HTD','HYP','INJ','LIV','NEP','OTH','PNF','STK','SUI']
-var data, race_data = init();
 
 var svg = d3.select("svg");
 svg.append("text")
@@ -106,23 +104,19 @@ d3.select("svg").append("g").attr("transform","translate(" +margin+ ","+ (height
      .text("Disease");
 
 var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");;
-function update(index, init=0) {
+function update(index) {
 	var rect;
-	if (init) {
-		rect = g.selectAll("rect").data(d3.entries(data))
-		.enter().append("rect")
-		.attr("x", function(d, i) { return x(diseases[i]); })
-		.attr("y", function(d) { return y(d['value'][index]); })
-		.attr("width", x.bandwidth())
-		.attr("height", height - 10)
-	}
-	else {
-		rect = g.selectAll("rect").data(d3.entries(data))
-		.enter().append("rect")
-		.attr("x", function(d, i) { return x(diseases[i]); })
-		.attr("y", function(d) { return y(d['value'][index]); })
-		.attr("width", x.bandwidth())
-	}
+		// rect = g.selectAll("rect").data(d3.entries(data))
+		// .enter().append("rect")
+		// .attr("x", function(d, i) { return x(diseases[i]); })
+		// .attr("y", function(d) { return y(d['value'][index]); })
+		// .attr("width", x.bandwidth())
+		// .attr("height", height - 10)
+	rect = g.selectAll("rect").data(d3.entries(data))
+	.enter().append("rect")
+	.attr("x", function(d, i) { return x(diseases[i]); })
+	.attr("y", function(d) { return y(d['value'][index]); })
+	.attr("width", x.bandwidth())
 
 	rect.transition()
 	.duration(1000)
@@ -144,7 +138,7 @@ function update(index, init=0) {
 
 }
 
-update(0, 1)
+update(0)
 
 
 
