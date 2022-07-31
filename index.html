@@ -101,13 +101,17 @@ async function init() {
          .attr("stroke", "black")
          .text("Disease");
 
-    function update(index) {
+    function update(index, init=False) {
     	var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
 		var rect = g.selectAll("rect").data(d3.entries(data))
 		.enter().append("rect")
 		.attr("x", function(d, i) { return x(diseases[i]); })
 		.attr("y", function(d) { return y(d['value'][index]); })
 		.attr("width", x.bandwidth())
+
+		if (init) {
+			rect.attr("height", 10)
+		}
 
 		rect.transition()
 		.duration(1000)
@@ -129,7 +133,7 @@ async function init() {
 
 	}
 
-	update(0)
+	update(0, True)
 
 }
 
