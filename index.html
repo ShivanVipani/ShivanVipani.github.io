@@ -21,7 +21,8 @@
 <svg width=800 height=800></svg>
 <div id="tooltip"></div>
 <script>
-var diseases, data, race_data;
+var diseases = diseases = ['ALZ','CAN','CLD','DIA','HOM','HTD','HYP','INJ','LIV','NEP','OTH','PNF','STK','SUI']
+var data, race_data;
 var svg = d3.select("svg");
 svg.append("text")
    .attr("transform", "translate(100,0)")
@@ -38,7 +39,6 @@ var y = d3.scaleLinear().domain([0,2305]).range([height,0]);
 var tooltip = d3.select("#tooltip");
 
 async function init() {
-	diseases = ['ALZ','CAN','CLD','DIA','HOM','HTD','HYP','INJ','LIV','NEP','OTH','PNF','STK','SUI']
 
 	var csv = await d3.csv("https://ShivanVipani.github.io/disease.csv");
 	var race_csv = await d3.csv("https://ShivanVipani.github.io/race.csv");
