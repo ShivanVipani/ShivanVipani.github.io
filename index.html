@@ -144,10 +144,10 @@ function update(data, race_data, index, init=0) {
         	+ "<br>Pacific Islander: " + race_data[diseases[i]]['Non-Hispanic Pacific Islander/Native Hawaiian'][index] 
         	+ "<br>White: " + race_data[diseases[i]]['Non-Hispanic White'][index] 
         	);
-        rect.attr("fill", "#82E0AA");
+        d3.select('#rect'+i).attr("fill", "#82E0AA");
     })	
     .on("mouseout", function(d) {tooltip.style("opacity", 0);	
-		rect.attr("fill", "lightblue");
+		d3.select('#rect'+i).attr("fill", "lightblue");
 	})
     console.log("allo", index)
 }
