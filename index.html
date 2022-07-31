@@ -37,7 +37,7 @@ var height = svg.attr("height") - 2*margin;
 var x = d3.scaleBand().domain(diseases).range([0,width]);
 var y = d3.scaleLinear().domain([0,2305]).range([height,0]);
 var tooltip = d3.select("#tooltip");
-svg.append("group").attr("transform", "translate("+margin+","+margin+")")
+svg.append("g").attr("transform", "translate("+margin+","+margin+")")
 
 async function init() {
 
@@ -105,7 +105,7 @@ async function init() {
 }
 
 function update(data, race_data, index, init=0) {
-	var g = svg.select("group");
+	var g = svg.select("g");
 	var rect;
 	if (init) {
 		rect = g.selectAll("rect").data(d3.entries(data))
