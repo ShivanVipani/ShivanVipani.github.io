@@ -82,7 +82,6 @@ async function init() {
 	var height = svg.attr("height") - 2*margin;
 	var x = d3.scaleBand().domain(diseases).range([0,width]);
 	var y = d3.scaleLinear().domain([0,2305]).range([height,0]);
-	var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
 	var tooltip = d3.select("#tooltip");
 
 	d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y))
@@ -104,6 +103,7 @@ async function init() {
          .text("Disease");
 
     function update(index) {
+    	var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
 		g.selectAll("rect").data(d3.entries(data))
 		.enter().append("rect")
 		.transition()
