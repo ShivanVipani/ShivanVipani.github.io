@@ -170,7 +170,7 @@ function update(data, race_data, index, init=0) {
 		d3.select('#rect'+i).attr("fill", "lightblue");
 	})
     console.log("allo", index)
-    svg.select("text").text("Alameda County Deaths by Cause in "+(2017+i))
+    svg.select("text").text("Alameda County Deaths by Cause in "+(2017+index))
 
     if (index === 3) {
     	const makeAnnotations = d3.annotation().type(d3.annotationLabel)
