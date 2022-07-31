@@ -113,6 +113,7 @@ function update(data, race_data, index, init=0) {
 		.attr("y", function(d) { return y(d['value'][index]); })
 		.attr("width", x.bandwidth())
 		.attr("height", 10)
+		console.log("init")
 	}
 	else {
 		rect = g.selectAll("rect").data(d3.entries(data))
@@ -120,6 +121,7 @@ function update(data, race_data, index, init=0) {
 		.attr("x", function(d, i) { return x(diseases[i]); })
 		.attr("y", function(d) { return y(d['value'][index]); })
 		.attr("width", x.bandwidth())
+		console.log("not init")
 	}
 
 	rect.transition()
