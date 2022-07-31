@@ -101,7 +101,7 @@ async function init() {
          .attr("stroke", "black")
          .text("Disease");
 
-    function update(index, init=False) {
+    function update(index, init=0) {
     	var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
 		var rect = g.selectAll("rect").data(d3.entries(data))
 		.enter().append("rect")
@@ -133,7 +133,7 @@ async function init() {
 
 	}
 
-	update(0, True)
+	update(0, 1)
 
 }
 
