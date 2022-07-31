@@ -30,7 +30,7 @@ svg.append("text")
    .attr("x", 50)
    .attr("y", 20)
    .attr("font-size", "24px")
-   .text("Alameda County Deaths by Cause")
+   .text("Alameda County Deaths by Cause in 2017")
 
 var margin = 50;
 var width = svg.attr("width") - 2*margin;
@@ -63,7 +63,7 @@ const makeAnnotations = d3.annotation()
  d3.select("g")
   .call(makeAnnotations)
 
-d3.select("annotations").style("opacity", 0)
+d3.selectAll("annotations").style("opacity", 0)
 
 async function init() {
 
@@ -176,6 +176,7 @@ function update(data, race_data, index, init=0) {
 		d3.select('#rect'+i).attr("fill", "lightblue");
 	})
     console.log("allo", index)
+    svg.select("text").text("Alameda County Deaths by Cause in "+(2017+i))
 }
 
 
