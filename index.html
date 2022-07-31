@@ -1,7 +1,7 @@
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> 
-	rect {fill: lightblue; stroke: black;}
+	rect {stroke: black;}
 </style>
 <style>
 	#tooltip {
@@ -113,6 +113,7 @@ function update(data, race_data, index, init=0) {
 		.attr("x", function(d, i) { return x(diseases[i]); })
 		.attr("width", x.bandwidth())
 		.attr("y", height)
+		.attr("fill", "lightblue")
 		//.attr("y", function(d) { return y(d['value'][index]); })
 		//.attr("height", 10)
 		console.log("init")
