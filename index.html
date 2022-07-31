@@ -63,7 +63,7 @@ const makeAnnotations = d3.annotation()
  d3.select("g")
   .call(makeAnnotations)
 
-d3.select("annotations").attr("opacity", 0)
+d3.select("annotations").style("opacity", 0)
 
 async function init() {
 
