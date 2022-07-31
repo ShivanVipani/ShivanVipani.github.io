@@ -112,6 +112,7 @@ function update(data, race_data, index, init=0) {
 		.enter().append("rect")
 		.attr("x", function(d, i) { return x(diseases[i]); })
 		.attr("width", x.bandwidth())
+		.attr("y", height+margin)
 		//.attr("y", function(d) { return y(d['value'][index]); })
 		//.attr("height", 10)
 		console.log("init")
