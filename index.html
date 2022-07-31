@@ -106,8 +106,9 @@ async function init() {
          .attr("stroke", "black")
          .text("Disease");
 
+    var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
+
     function update(data, race_data, index) {
-    	var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
 		g.selectAll("rect").data(d3.entries(data))
 		.enter().append("rect")
 		.transition()
