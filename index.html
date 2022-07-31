@@ -111,16 +111,16 @@ function update(data, race_data, index, init=0) {
 		rect = g.selectAll("rect").data(d3.entries(data))
 		.enter().append("rect")
 		.attr("x", function(d, i) { return x(diseases[i]); })
-		//.attr("y", function(d) { return y(d['value'][index]); })
 		.attr("width", x.bandwidth())
+		//.attr("y", function(d) { return y(d['value'][index]); })
 		//.attr("height", 10)
 		console.log("init")
 	}
 	else {
 		rect = g.selectAll("rect").data(d3.entries(data))
 		.attr("x", function(d, i) { return x(diseases[i]); })
-		//.attr("y", function(d) { return y(d['value'][index]); })
 		.attr("width", x.bandwidth())
+		//.attr("y", function(d) { return y(d['value'][index]); })
 		console.log("not init")
 	}
 
