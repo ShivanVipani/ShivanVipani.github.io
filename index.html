@@ -103,13 +103,17 @@ async function init() {
 
     function update(index) {
     	var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
-		g.selectAll("rect").data(d3.entries(data))
+		var rect = g.selectAll("rect").data(d3.entries(data))
 		.enter().append("rect")
 		.attr("x", function(d, i) { return x(diseases[i]); })
 		.attr("y", function(d) { return y(d['value'][index]); })
 		.attr("width", x.bandwidth())
+
+		rect.transition()
+		.duration(1000)
 		.attr("height", function(d) {return (height - y(d['value'][index])); })
-		.on("mouseover", function(d, i) {tooltip.style("opacity", .9)
+		
+		rect.on("mouseover", function(d, i) {tooltip.style("opacity", .9)
 			.style("left", d3.event.pageX + "px")		
 	        .style("top", (d3.event.pageY - 28) + "px")
 	        .html("Hispanic: " + race_data[diseases[i]]['Hispanic'][index] 
