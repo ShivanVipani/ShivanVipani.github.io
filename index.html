@@ -103,11 +103,22 @@ async function init() {
 
     function update(index, init=0) {
     	var g = svg.append("g").attr("transform", "translate("+margin+","+margin+")");
-		var rect = g.selectAll("rect").data(d3.entries(data))
-		.enter().append("rect")
-		.attr("x", function(d, i) { return x(diseases[i]); })
-		.attr("y", function(d) { return y(d['value'][index]); })
-		.attr("width", x.bandwidth())
+    	var rect;
+    	if (init) {
+			rect = g.selectAll("rect").data(d3.entries(data))
+			.enter().append("rect")
+			.attr("x", function(d, i) { return x(diseases[i]); })
+			.attr("y", function(d) { return y(d['value'][index]); })
+			.attr("width", x.bandwidth())
+			.attr("height", 10)
+		}
+		else {
+			rect = g.selectAll("rect").data(d3.entries(data))
+			.enter().append("rect")
+			.attr("x", function(d, i) { return x(diseases[i]); })
+			.attr("y", function(d) { return y(d['value'][index]); })
+			.attr("width", x.bandwidth())
+		}
 
 		if (init) {
 			rect.attr("height", 10)
