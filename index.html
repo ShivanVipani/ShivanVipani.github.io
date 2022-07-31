@@ -52,12 +52,18 @@ const annotations = [
       radiusPadding: 0   // white space around circle befor connector
     },
     color: ["red"],
-    x: 525,
-    y: 15,
+    x: 575,
+    y: 65,
     dy: 30,
     dx: 120
   }
 ]
+const makeAnnotations = d3.annotation().type(d3.annotationLabel)
+.annotations(annotations)
+svg.append("g").attr('class', 'annot')
+.call(makeAnnotations)
+
+d3.select('.annot').style('opacity', 0)
 
 async function init() {
 
@@ -173,10 +179,7 @@ function update(data, race_data, index, init=0) {
     svg.select("text").text("Alameda County Deaths by Cause in "+(2017+index))
 
     if (index === 3) {
-    	const makeAnnotations = d3.annotation().type(d3.annotationLabel)
-		.annotations(annotations)
-		svg.append("g").attr('class', 'annot')
-		.call(makeAnnotations)
+    	//
     }
 }
 
