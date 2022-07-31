@@ -111,7 +111,7 @@ function update(data, race_data, index, init=0) {
 		rect = g.selectAll("rect").data(d3.entries(data))
 		.enter().append("rect")
 		.attr("x", function(d, i) { return x(diseases[i]); })
-		.attr("y", function(d) { return y(d['value'][index]); })
+		//.attr("y", function(d) { return y(d['value'][index]); })
 		.attr("width", x.bandwidth())
 		//.attr("height", 10)
 		console.log("init")
@@ -119,13 +119,14 @@ function update(data, race_data, index, init=0) {
 	else {
 		rect = g.selectAll("rect").data(d3.entries(data))
 		.attr("x", function(d, i) { return x(diseases[i]); })
-		.attr("y", function(d) { return y(d['value'][index]); })
+		//.attr("y", function(d) { return y(d['value'][index]); })
 		.attr("width", x.bandwidth())
 		console.log("not init")
 	}
 
 	rect.transition()
 	.duration(1000)
+	.attr("y", function(d) { return y(d['value'][index]); })
 	.attr("height", function(d) {return (height - y(d['value'][index])); })
 	
 	rect.on("mouseover", function(d, i) {tooltip.style("opacity", .9)
